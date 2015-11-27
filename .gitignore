@@ -12,6 +12,14 @@ src_managed/
 project/boot/
 project/plugins/project/
 
+#Playframework
+/project/project
+/project/target
+/target
+/lib/
+/logs/
+/modules
+
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
