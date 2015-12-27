@@ -7,11 +7,11 @@ import model.{Cell=>CellTrait}
 case class Cell(isOpened: Boolean, hasBomb: Boolean, bombCounter: Int, isFlagged: Boolean) extends  CellTrait{
   def this() = this(false, false, 0, false)
 
-  def setBombCount(x:Int) = copy(bombCounter=x)
+  def setBombCount(x:Int) : Cell = copy(bombCounter=x)
 
-  def setBomb(bomb: Boolean)= copy(hasBomb = bomb)
+  def setBomb(bomb: Boolean): Cell = copy(hasBomb = bomb)
 
-  def setOpened(opened: Boolean)= copy(isOpened = opened)
+  def setOpened(opened: Boolean) : Cell = copy(isOpened = opened)
 
-  def setFlag(flag: Boolean) = copy(isFlagged = flag)
+  def setFlag(flag: Boolean) :Cell  = copy(isFlagged = flag)
 }

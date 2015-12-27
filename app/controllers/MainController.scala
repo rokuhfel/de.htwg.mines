@@ -6,6 +6,7 @@ import model.impl.Grid
   */
 class MainController {
   def main(args: Array[String]){
-    var grid = new Grid(1,1,1)
+    val grid = new Grid(1,1,1)
+    grid.toString()
   }
 }
