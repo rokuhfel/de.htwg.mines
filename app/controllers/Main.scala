@@ -1,5 +1,6 @@
 package controllers
 
+import UIs.TUI
 import model.impl.Grid
 import java.util.Scanner
 
@@ -8,9 +9,10 @@ import java.util.Scanner
   */
 object Main {
   def main(args: Array[String]){
-    val kb = new Scanner(System.in)
+    val tui = new TUI()
+  /*  val kb = new Scanner(System.in)
     val grid = new Grid(4,4,5)
-    grid.toString2()
+    grid.toString3()
 
     var x = 0
     var y = 0
@@ -21,7 +23,7 @@ object Main {
       print("Y: ")
       y = kb.nextInt()
       game = grid.openField(x,y)
-      grid.toString2()
-    }
+      grid.toString3()
+    } */
   }
 }

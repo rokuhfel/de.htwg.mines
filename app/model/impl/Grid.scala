@@ -10,7 +10,6 @@ import scala.util.Random
 case class Grid (height: Int, width: Int, bombs: Int) extends GridTrait{
   var gridArray = Array.ofDim[Cell](height, width)
   val random = new Random()
-  //var xy =
   var bombsToPlace = bombs
   instantiate()
   placeBombs()
@@ -21,15 +20,14 @@ case class Grid (height: Int, width: Int, bombs: Int) extends GridTrait{
 
 
   //def openedField(x:Int,y:Int) = gridArray(x)(y).setOpened(true)
-  def placeFlag(x:Int,y:Int) = gridArray(x)(y).setFlag(true)
+  def placeFlag(x:Int,y:Int) = gridArray(x)(y) = gridArray(x)(y).setFlag(true)
   def showBombCounter(x:Int,y:Int) = gridArray(x)(y).bombCounter
 
   def placeBombs() = {
     for(i <- 0 until height; j <- 0 until width){
-      var xy = random.nextInt(5)
+      val xy = random.nextInt(5)
 
       if(bombsToPlace > 0 && xy < 2){
-        println(xy)
         gridArray(i)(j) = gridArray(i)(j).setBomb(true)
         bombsToPlace = bombsToPlace - 1
       }
@@ -79,11 +77,11 @@ case class Grid (height: Int, width: Int, bombs: Int) extends GridTrait{
 
 
   def instantiate(): Unit ={
-    println(height + "  " + width)
     for(i <- 0 until height; j <- 0 until width){
       gridArray(i)(j) = new Cell()
     }
   }
+  //analyse toString
    def toString2(){
      println()
     for(i <- 0 until height){
@@ -107,6 +105,32 @@ case class Grid (height: Int, width: Int, bombs: Int) extends GridTrait{
 
         }
 
+      }
+      println()
+    }
+  }
+  //Spielbare ToString
+  def toString3(){
+    println()
+    for(i <- 0 until height){
+      print("|")
+      for(j <- 0 until width){
+        if(gridArray(i)(j).isOpened){
+          if(gridArray(i)(j).hasBomb){
+            print("*|")
+          }
+          else{
+            print(gridArray(i)(j).bombCounter + "|")
+          }
+        }
+        else{
+          if(gridArray(i)(j).isFlagged){
+            print("F|")
+          }
+          else{
+            print("_|")
+          }
+        }
       }
       println()
     }
