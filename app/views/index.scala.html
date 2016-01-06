@@ -20,6 +20,10 @@
 		}
 	}
 
+	function xx(){
+		alert("sweg");
+	}
+
 
 
 
@@ -32,10 +36,11 @@
 
 			<button type="button"
 			id="@c x @cell"
-			onclick="xy(@c,@cell,@controller.grid.gridArray(c)(cell).bombCounter)"
+			onclick="console.log(@controller.handleButtonPress(c,cell,1)); xx()"
+			ondblclick="console.log(@controller.handleButtonPress(c,cell,0))"
 			class="btn btn-info" name="@c x @cell"> </button>
 		}
 		<br>
-		}
+	}
 	</div>
 }
