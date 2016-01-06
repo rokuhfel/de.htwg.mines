@@ -1,10 +1,41 @@
 @(message: String, controller: controllers.MainController)
+@getBlockname(x:Int, y:Int) = @{
 
+}
+
+<script>
+	function xy(x,y,z){
+		if(event.button == 1){
+
+
+			if(document.getElementById(x + ' x ' + y).textContent=='F'){
+				document.getElementById(x + ' x ' + y).textContent=''
+			}else{
+				document.getElementById(x + ' x ' + y).textContent='F'
+			}
+		}else
+		{
+
+			document.getElementById(x + ' x ' + y).textContent=z;
+		}
+	}
+
+
+
+
+</script>
 @main("Minesweeper") {
+	<h1> Welcome to HTWG-Mines!!!!</h1>
+	<div id="content">
 	@for(cell <- 0 to 3){
 		@for(c <- 0 to 3) {
-			<button type="button" class="btn btn-default">@controller.grid.gridArray(cell)(c).hasBomb</button>
+
+			<button type="button"
+			id="@c x @cell"
+			onclick="xy(@c,@cell,@controller.grid.gridArray(c)(cell).bombCounter)"
+			class="btn btn-info" name="@c x @cell"> </button>
 		}
 		<br>
-	}
+		}
+	</div>
 }
