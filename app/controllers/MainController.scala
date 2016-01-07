@@ -7,32 +7,34 @@ import model.impl.Grid
 class MainController {
     var grid = new Grid(4,4,3)
 
-    def handleButtonPress(x: Int, y: Int, variant: Int): String ={
-        var response = ""
-        if(variant == 1){
-            toggleFlag(x,y)
-            response = grid.gridArray(x)(y).bombCounter.toString
-        }
-        else{
-            openField(x,y)
-            response = grid.gridArray(x)(y).hasBomb.toString
-        }
-        response
-
+    def handleClick(x:Int,y:Int): Boolean ={
+        toggleFlag(x,y)
     }
 
-    def openField(x:Int,y:Int) ={
-        grid.gridArray(x)(y).setOpened(true)
+    def handleDblClick(x:Int,y:Int): Boolean ={
+        openField(x,y)
+    }
+
+    def openField(x:Int,y:Int): Boolean ={
+        grid.gridArray(x)(y).setOpened(true).hasBomb
+    }
+
+    def getCounter(x:Int,y:Int): Int = {
+        grid.gridArray(x)(y).bombCounter
     }
 
     def toggleFlag(x:Int,y:Int): Boolean ={
-        if(grid.gridArray(x)(y).isFlagged){
-            grid.gridArray(x)(y).setFlag(false)
+
+        if(!grid.gridArray(x)(y).isFlagged){
+
+            grid.gridArray(x)(y) = grid.gridArray(x)(y).setFlag(true)
         }
         else{
-            grid.gridArray(x)(y).setFlag(true)
+
+            grid.gridArray(x)(y) = grid.gridArray(x)(y).setFlag(false)
         }
-        grid.gridArray(x)(y).isFlagged
+         grid.gridArray(x)(y).isFlagged
+
     }
 
     def newGame(x:Int, y:Int, bombs:Int): Unit ={

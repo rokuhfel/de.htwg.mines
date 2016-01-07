@@ -4,30 +4,25 @@
 }
 
 <script>
-	function xy(x,y,z){
-		if(event.button == 1){
-
-
-			if(document.getElementById(x + ' x ' + y).textContent=='F'){
-				document.getElementById(x + ' x ' + y).textContent=''
-			}else{
-				document.getElementById(x + ' x ' + y).textContent='F'
-			}
-		}else
-		{
-
-			document.getElementById(x + ' x ' + y).textContent=z;
+	function handleDblClickResponse(resp,x,y,counter){
+		if(resp != true){
+			document.getElementById(x + " x " + y).innerHTML = counter;
+		}
+		else{
+			alert("You Lost");
 		}
 	}
 
-	function xx(){
-		alert("sweg");
+	function handleClickResponse(resp,x,y){
+		if(resp == true){
+			console.log(x + " x " + y);
+			document.getElementById(x + " x " + y).innerHTML = "F";
+		}
+		console.log("Click-> Resp: " + resp + " x: " + x + " y: " + y)
 	}
 
-
-
-
 </script>
+
 @main("Minesweeper") {
 	<h1> Welcome to HTWG-Mines!!!!</h1>
 	<div id="content">
@@ -36,8 +31,8 @@
 
 			<button type="button"
 			id="@c x @cell"
-			onclick="console.log(@controller.handleButtonPress(c,cell,1)); xx()"
-			ondblclick="console.log(@controller.handleButtonPress(c,cell,0))"
+			onclick="handleClickResponse(@controller.handleClick(c,cell),@c,@cell)"
+			ondblclick="handleDblClickResponse(@controller.handleDblClick(c,cell), @c, @cell, @controller.getCounter(c,cell))"
 			class="btn btn-info" name="@c x @cell"> </button>
 		}
 		<br>

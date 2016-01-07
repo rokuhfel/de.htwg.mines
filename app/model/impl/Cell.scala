@@ -9,9 +9,13 @@ case class Cell(isOpened: Boolean, hasBomb: Boolean, bombCounter: Int, isFlagged
 
   def setBombCount(x:Int) : Cell = copy(bombCounter=x)
 
+
   def setBomb(bomb: Boolean): Cell = copy(hasBomb = bomb)
 
   def setOpened(opened: Boolean) : Cell = copy(isOpened = opened)
 
-  def setFlag(flag: Boolean) :Cell  = copy(isFlagged = flag)
+  def setFlag(flag: Boolean) :Cell  =
+    {
+      copy(isFlagged = flag)
+    }
 }

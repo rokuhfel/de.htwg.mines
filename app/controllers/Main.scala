@@ -9,7 +9,15 @@ import java.util.Scanner
   */
 object Main {
   def main(args: Array[String]){
-    val tui = new TUI()
+   // val tui = new TUI()
+   val c =  new MainController()
+
+
+    println(c.handleClick(0,0))
+    println(c.handleClick(0,0))
+    println(c.handleClick(0,0))
+    println(c.handleClick(0,0))
+
   /*  val kb = new Scanner(System.in)
     val grid = new Grid(4,4,5)
     grid.toString3()
